@@ -19,25 +19,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class SkillController extends AbstractController
 {
     /**
-     * @Route(name="skill_manage")
+     * @Route(name="skill_index")
      * @param SkillRepository $skillRepository
      * @return Response
      */
-    public function manage(SkillRepository $skillRepository): Response
+    public function index(SkillRepository $skillRepository): Response
     {
         $skills = $skillRepository->findAll();
 
-        return $this->render("back_office/skill/manage.html.twig", [
+        return $this->render("back_office/skill/index.html.twig", [
             "skills" => $skills
         ]);
     }
 
     /**
-     * @Route("/create", name="skill_create")
+     * @Route("/new", name="skill_new")
      * @param Request $request
      * @return Response
      */
-    public function create(Request $request): Response
+    public function new(Request $request): Response
     {
         $skill = new Skill();
         $form = $this->createForm(SkillType::class, $skill)->handleRequest($request);
@@ -47,21 +47,21 @@ class SkillController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La compétence a été ajoutée avec succès !");
 
-            return $this->redirectToRoute("skill_manage");
+            return $this->redirectToRoute("skill_index");
         }
 
-        return $this->render("back_office/skill/create.html.twig", [
+        return $this->render("back_office/skill/new.html.twig", [
             "form" => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/{id}/update", name="skill_update")
+     * @Route("/{id}/edit", name="skill_edit")
      * @param Skill $skill
      * @param Request $request
      * @return Response
      */
-    public function update(Skill $skill, Request $request): Response
+    public function edit(Skill $skill, Request $request): Response
     {
         $form = $this->createForm(SkillType::class, $skill)->handleRequest($request);
 
@@ -69,10 +69,10 @@ class SkillController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La compétence a été modifiée avec succès !");
 
-            return $this->redirectToRoute("skill_manage");
+            return $this->redirectToRoute("skill_index");
         }
 
-        return $this->render("back_office/skill/update.html.twig", [
+        return $this->render("back_office/skill/edit.html.twig", [
             "form" => $form->createView()
         ]);
     }
@@ -88,6 +88,6 @@ class SkillController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
         $this->addFlash("success", "La compétence a été supprimée avec succès !");
 
-        return $this->redirectToRoute("skill_manage");
+        return $this->redirectToRoute("skill_index");
     }
 }

@@ -1,3 +1,8 @@
+@import "~bootstrap";
 @import "~bootstrap/scss";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
+
+body{
+  background-image: linear-gradient(to left bottom, #0b1a30, #004f70, #008b82, #38c15a, #f0e604);
+}

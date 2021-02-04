@@ -19,25 +19,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReferenceController extends AbstractController
 {
     /**
-     * @Route(name="reference_manage")
+     * @Route(name="reference_index")
      * @param ReferenceRepository $referenceRepository
      * @return Response
      */
-    public function manage(ReferenceRepository $referenceRepository): Response
+    public function index(ReferenceRepository $referenceRepository): Response
     {
         $references = $referenceRepository->findAll();
 
-        return $this->render("back_office/reference/manage.html.twig", [
+        return $this->render("back_office/reference/index.html.twig", [
             "references" => $references
         ]);
     }
 
     /**
-     * @Route("/create", name="reference_create")
+     * @Route("/new", name="reference_new")
      * @param Request $request
      * @return Response
      */
-    public function create(Request $request): Response
+    public function new(Request $request): Response
     {
         $reference = new Reference();
         $form = $this->createForm(ReferenceType::class, $reference)->handleRequest($request);
@@ -47,21 +47,21 @@ class ReferenceController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La référence a été ajoutée avec succès !");
 
-            return $this->redirectToRoute("reference_manage");
+            return $this->redirectToRoute("reference_index");
         }
 
-        return $this->render("back_office/reference/create.html.twig", [
+        return $this->render("back_office/reference/new.html.twig", [
             "form" => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/{id}/update", name="reference_update")
+     * @Route("/{id}/edit", name="reference_edit")
      * @param Reference $reference
      * @param Request $request
      * @return Response
      */
-    public function update(Reference $reference, Request $request): Response
+    public function edit(Reference $reference, Request $request): Response
     {
         $form = $this->createForm(ReferenceType::class, $reference)->handleRequest($request);
 
@@ -69,10 +69,10 @@ class ReferenceController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La référence a été modifiée avec succès !");
 
-            return $this->redirectToRoute("reference_manage");
+            return $this->redirectToRoute("reference_index");
         }
 
-        return $this->render("back_office/reference/update.html.twig", [
+        return $this->render("back_office/reference/edit.html.twig", [
             "form" => $form->createView()
         ]);
     }
@@ -88,6 +88,6 @@ class ReferenceController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
         $this->addFlash("success", "La référence a été supprimée avec succès !");
 
-        return $this->redirectToRoute("reference_manage");
+        return $this->redirectToRoute("reference_index");
     }
 }

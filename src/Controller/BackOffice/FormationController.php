@@ -19,25 +19,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormationController extends AbstractController
 {
     /**
-     * @Route(name="formation_manage")
+     * @Route(name="formation_index")
      * @param FormationRepository $formationRepository
      * @return Response
      */
-    public function manage(FormationRepository $formationRepository): Response
+    public function index(FormationRepository $formationRepository): Response
     {
         $formations = $formationRepository->findAll();
 
-        return $this->render("back_office/formation/manage.html.twig", [
+        return $this->render("back_office/formation/index.html.twig", [
             "formations" => $formations
         ]);
     }
 
     /**
-     * @Route("/create", name="formation_create")
+     * @Route("/create", name="formation_new")
      * @param Request $request
      * @return Response
      */
-    public function create(Request $request): Response
+    public function new(Request $request): Response
     {
         $formation = new Formation();
         $form = $this->createForm(FormationType::class, $formation)->handleRequest($request);
@@ -47,21 +47,21 @@ class FormationController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La formation a été ajoutée avec succès !");
 
-            return $this->redirectToRoute("formation_manage");
+            return $this->redirectToRoute("formation_index");
         }
 
-        return $this->render("back_office/formation/create.html.twig", [
+        return $this->render("back_office/formation/new.html.twig", [
             "form" => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/{id}/update", name="formation_update")
+     * @Route("/{id}/edit", name="formation_edit")
      * @param Formation $formation
      * @param Request $request
      * @return Response
      */
-    public function update(Formation $formation, Request $request): Response
+    public function edit(Formation $formation, Request $request): Response
     {
         $form = $this->createForm(FormationType::class, $formation)->handleRequest($request);
 
@@ -69,10 +69,10 @@ class FormationController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash("success", "La formation a été modifiée avec succès !");
 
-            return $this->redirectToRoute("formation_manage");
+            return $this->redirectToRoute("formation_index");
         }
 
-        return $this->render("back_office/formation/update.html.twig", [
+        return $this->render("back_office/formation/edit.html.twig", [
             "form" => $form->createView()
         ]);
     }
@@ -88,6 +88,6 @@ class FormationController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
         $this->addFlash("success", "La formation a été supprimée avec succès !");
 
-        return $this->redirectToRoute("formation_manage");
+        return $this->redirectToRoute("formation_index");
     }
 }
