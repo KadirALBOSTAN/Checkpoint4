@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}
+    Me contacter
+{% endblock %}
+
+{% block body %}
+    <h1>Laissez moi un message</h1>
+
+    <div class="contact col lg-6 col-md-6">
+        {{ form_start(form) }}
+
+        <label for="contact_lastname">
+            Nom
+        </label>
+        {{ form_widget(form.lastname, {'attr': {'placeholder': 'Nom'}}) }}
+
+        <label for="contact_firstname">
+            Prénom
+        </label>
+        {{ form_widget(form.firstname, {'attr': {'placeholder': 'Prénom'}}) }}
+
+        <label for="contact_email">
+            Email
+        </label>
+        {{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+
+        <label for="contact_number">
+            Numéro de téléphone
+        </label>
+        {{ form_widget(form.number, {'attr': {'placeholder': 'Numéro'}}) }}
+
+        <label for="contact_message">
+            Prénom
+        </label>
+        {{ form_widget(form.message, {'attr': {'placeholder': 'Veuillez écrire votre message'}}) }}
+
+        <button class="btn">Envoyer</button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

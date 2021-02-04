@@ -2,7 +2,6 @@
 
 namespace App\Controller\FrontOffice;
 
-use App\Repository\SkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,12 +16,9 @@ class HomeController extends AbstractController
     /**
      * @return Response
      */
-    public function __invoke(SkillRepository $skillRepository): Response
+    public function __invoke(): Response
     {
-        $skills = $skillRepository->findAll();
-
         return $this->render("front_office/home.html.twig", [
-            "skills" => $skills
         ]);
     }
 }
