@@ -2,16 +2,71 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 align-content-md-center">
             <h1>Kadir ALBOSTAN</h1>
             <h2>Développeur web</h2>
             <h3>Formations</h3>
-            <div id="formations"></div>
+                <div id="col-lg-4 formations">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Ecole</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for formation in formations %}
+                            <tr>
+                                <td>{{ formation.id }}</td>
+                                <td>{{ formation.name }}</td>
+                                <td>{{ formation.school }}</td>
+                                <td>{{ formation.description }}</td>
+                        {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             <h3>Compétences</h3>
             <ul class="list-group" id="skills"></ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Compétences</th>
+                        <th>Niveau</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for skill in skills %}
+                <tr>
+                    <td>{{ skill.name }}</td>
+                    <td>{{ skill.level }}/10</td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
             <h3>Expériences professionnelles</h3>
             <div id="references" class="row"></div>
-        </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Poste</th>
+                        <th>Entreprise</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                        <tbody>
+                        {% for reference in references %}
+                        <tr>
+                            <td>{{ reference.title }}</td>
+                            <td>{{ reference.company }}</td>
+                            <td>{{ reference.description }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
     </div>
 {% endblock %}
 

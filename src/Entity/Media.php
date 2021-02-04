@@ -23,27 +23,27 @@ class Media
      * @ORM\Column(type="integer")
      * @Groups({"get"})
      */
-    private ?int $id = null;
+    private $id;
 
     /**
      * @var string|null
      * @ORM\Column
      * @Groups({"get"})
      */
-    private ?string $path = null;
+    private $path;
 
     /**
      * @var UploadedFile|null
      * @Assert\Image
      */
-    private ?UploadedFile $file = null;
+    private $file;
 
     /**
      * @var Reference|null
      * @ORM\ManyToOne(targetEntity="Reference", inversedBy="medias")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    private ?Reference $reference;
+    private $reference;
 
     /**
      * @return int|null

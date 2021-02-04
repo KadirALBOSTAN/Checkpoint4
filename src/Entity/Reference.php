@@ -24,7 +24,7 @@ class Reference
      * @ORM\Column(type="integer")
      * @Groups({"get"})
      */
-    private ?int $id = null;
+    private $id;
 
     /**
      * @var string|null
@@ -32,7 +32,7 @@ class Reference
      * @Assert\NotBlank(message="Ce champs ne peut pas être vide.")
      * @Groups({"get"})
      */
-    private ?string $title = null;
+    private $title;
 
     /**
      * @var string|null
@@ -40,7 +40,7 @@ class Reference
      * @Assert\NotBlank(message="Ce champs ne peut pas être vide.")
      * @Groups({"get"})
      */
-    private ?string $company = null;
+    private $company;
 
     /**
      * @var string|null
@@ -48,7 +48,7 @@ class Reference
      * @Assert\NotBlank(message="Ce champs ne peut pas être vide.")
      * @Groups({"get"})
      */
-    private ?string $description = null;
+    private $description;
 
     /**
      * @var DateTimeInterface|null
@@ -56,14 +56,14 @@ class Reference
      * @Assert\NotBlank(message="Ce champs ne peut pas être vide.")
      * @Groups({"get"})
      */
-    private ?DateTimeInterface $startedAt = null;
+    private $startedAt;
 
     /**
      * @var DateTimeInterface|null
      * @ORM\Column(type="date_immutable", nullable=true)
      * @Groups({"get"})
      */
-    private ?DateTimeInterface $endedAt = null;
+    private $endedAt;
 
     /**
      * @var Collection

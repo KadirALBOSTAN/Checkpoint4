@@ -19,48 +19,48 @@ class Formation
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
      */
-    private ?int $id = null;
+    public $id;
 
     /**
      * @var string|null
      * @ORM\Column
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide.")
      */
-    private ?string $name = null;
+    public $name;
 
     /**
      * @var string|null
      * @ORM\Column
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide.")
      */
-    private ?string $school = null;
+    public $school;
 
     /**
      * @var int|null
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide.")
      */
-    private ?int $gradeLevel = null;
+    public $gradeLevel;
 
     /**
      * @var string|null
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide.")
      */
-    private ?string $description = null;
+    public $description;
 
     /**
      * @var DateTimeInterface|null
      * @ORM\Column(type="date_immutable")
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide.")
      */
-    private ?DateTimeInterface $startedAt = null;
+    public $startedAt;
 
     /**
      * @var DateTimeInterface|null
      * @ORM\Column(type="date_immutable", nullable=true)
      */
-    private ?DateTimeInterface $endedAt = null;
+    public $endedAt;
 
     /**
      * @return int|null

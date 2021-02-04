@@ -56,7 +56,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{contact}", name="show", methods={"GET"})
+     * @Route("/contact", name="show", methods={"GET", "POST"})
      * @param Contact $contact
      * @return Response
      */
@@ -68,7 +68,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{contact}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/contact/edit", name="edit", methods={"GET","POST"})
      * @param Request $request
      * @param Contact $contact
      * @return Response

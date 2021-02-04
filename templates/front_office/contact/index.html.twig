@@ -25,10 +25,8 @@
                 <td>{{ contact.number }}</td>
                 <td>{{ contact.message }}</td>
                 <td>
-{#
                     <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
                     <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
-#}
                 </td>
             </tr>
         {% else %}

@@ -18,14 +18,14 @@ class Skill
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
      */
-    private ?int $id = null;
+    private $id;
 
     /**
      * @var string|null
      * @ORM\Column
      * @Assert\NotBlank(message="Ce champs ne peut pas être vide.")
      */
-    private ?string $name = null;
+    private $name;
 
     /**
      * @var int|null
@@ -38,7 +38,7 @@ class Skill
      *     maxMessage="Le niveau doit être inférieur ou égal à 10"
      * )
      */
-    private ?int $level = null;
+    private $level;
 
     /**
      * @return int|null
